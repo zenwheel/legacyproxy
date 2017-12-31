@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    htmlentities (4.3.4)
+    mini_portile2 (2.3.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
+    rmagick (2.16.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  htmlentities (~> 4.3, >= 4.3.4)
+  nokogiri (~> 1.8, >= 1.8.1)
+  rmagick (~> 2.16)
+
+BUNDLED WITH
+   1.16.1
