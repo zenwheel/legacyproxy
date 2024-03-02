@@ -15,6 +15,8 @@ $bufferLength = 4096
 $verbose = false
 $userAgent = 'LegacyProxy/1.0'
 
+$verbose = true if ARGV.include?('-v') or ARGV.include?('--verbose')
+
 $entityCoder = HTMLEntities.new
 
 $statusCodes = {
@@ -157,6 +159,14 @@ end
 def sendProxyContent(client, url, verb, headers, body)
 	begin
 		# TODO: try https first, fall back to http?
+		if url.start_with?('http') == false then
+			if url =~ /:443/ then
+				url = "https://#{url.strip}"
+			else
+				url = "http://#{url.strip}"
+			end
+		end
+
 		uri = URI.parse(url.strip)
 		puts "<-- #{uri.to_s}" if $verbose
 		http = Net::HTTP.new(uri.host, uri.port)
@@ -167,7 +177,7 @@ def sendProxyContent(client, url, verb, headers, body)
 		http.open_timeout = 30
 		http.read_timeout = 45
 
-		response = http.send_request(verb, uri.request_uri, body, headers)
+		response = http.send_request(verb, uri.path.nil? || uri.path.empty? ? "/" : uri.path, body, headers)
 
 		puts "--> Response code: #{response.code}" if $verbose
 

@@ -2,20 +2,22 @@ GEM
   remote: https://rubygems.org/
   specs:
     htmlentities (4.3.4)
-    mini_portile2 (2.8.1)
-    nokogiri (1.14.3)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.16.2-aarch64-linux)
       racc (~> 1.4)
-    racc (1.6.2)
-    rmagick (4.0.0)
+    observer (0.1.2)
+    pkg-config (1.5.6)
+    racc (1.7.3)
+    rmagick (5.4.4)
+      observer (~> 0.1)
+      pkg-config (~> 1.4)
 
 PLATFORMS
-  ruby
+  aarch64-linux
 
 DEPENDENCIES
   htmlentities (~> 4.3, >= 4.3.4)
-  nokogiri (~> 1.14)
-  rmagick (~> 4.0)
+  nokogiri (~> 1.16)
+  rmagick (~> 5.4)
 
 BUNDLED WITH
-   1.16.2
+   2.3.15
